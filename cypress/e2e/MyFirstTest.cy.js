@@ -11,8 +11,4 @@ describe('My First Test', () => {
         cy.title().should('eq','OrangeHRM123')
     })
 
-    // it('Agent Login', () => {
-    //     cy.visit("https://beta.alsharqi.co/core-ui/#/login")
-    // })
-
   })
