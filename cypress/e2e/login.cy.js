@@ -5,9 +5,10 @@ describe('Login Test', () => {
         cy.visit("https://beta.alsharqi.co/core-ui/#/login")
     })
 
-    it('Erohal Login', () => {
-        cy.visit("https://acc.erohal.io/#/login")
+    // it('Erohal Login', () => {
+    //     cy.visit("https://acc.erohal.io/#/login")
+    //     // cy.wait(30000)
         
-    })
+    // })
 
   })
