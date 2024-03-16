@@ -7,15 +7,7 @@ describe('handle dropdowns', () => {
         .select('Canada')
         .should('have.value', 'canada')
         
-    })
-
-    it.skip('Dropdown with select', () => {
-        cy.visit("https://www.zoho.com/commerce/free-demo.html")
-        cy.get('#zcf_address_country').should('be.visible')
-        .select('Pakistan')
-        .should('have.value', 'Pakistan')
-        
-    })
+    }) 
 
     it.skip('Dropdown without select', () => {
         cy.visit("https://www.dummyticket.com/dummy-ticket-for-visa-application/")
@@ -29,7 +21,14 @@ describe('handle dropdowns', () => {
     it('Auto Suggest Dropdown', () => {
         cy.visit("https://www.wikipedia.org/")
         cy.get('#searchInput').type('Pakistan')
+        cy.get('.suggestion-title').contains('Pakistan').click()
         
+    })
+
+    it.skip('Dynamic Dropdown', () => {
+        cy.visit("https://www.wikipedia.org/")
+        cy.get('#searchInput').type('Pakistan')
+        cy.get('.suggestion-title').contains('Pakistan').click()
         
     })
 
