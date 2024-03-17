@@ -1,7 +1,7 @@
 /// <reference types ="Cypress" />
 describe('handle dropdowns', () => {
 
-    it.skip('Dropdown with select', () => {
+    it('Dropdown with select', () => {
         cy.visit("https://testautomationpractice.blogspot.com/")
         cy.get('#country')
         .select('Canada')
@@ -9,7 +9,7 @@ describe('handle dropdowns', () => {
         
     }) 
 
-    it.skip('Dropdown without select', () => {
+    it('Dropdown without select', () => {
         cy.visit("https://www.dummyticket.com/dummy-ticket-for-visa-application/")
         cy.get('#select2-billing_country-container').click()
         cy.get('.select2-search__field').type('United Arab Emirates').type('{enter}')
@@ -18,7 +18,7 @@ describe('handle dropdowns', () => {
         
     })
 
-    it.skip('Auto Suggest Dropdown', () => {
+    it('Auto Suggest Dropdown', () => {
         cy.visit("https://www.wikipedia.org/")
         cy.get('#searchInput').type('Pakistan')
         cy.get('.suggestion-title').contains('Pakistan').click()
@@ -35,10 +35,7 @@ describe('handle dropdowns', () => {
                 cy.wrap($el).click()
             }
         })
-
         cy.get('#APjFqb').should('have.value', 'cypress automation tutorial')
-        
-        
     })
 
 })
