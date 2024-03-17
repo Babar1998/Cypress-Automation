@@ -18,17 +18,26 @@ describe('handle dropdowns', () => {
         
     })
 
-    it('Auto Suggest Dropdown', () => {
+    it.skip('Auto Suggest Dropdown', () => {
         cy.visit("https://www.wikipedia.org/")
         cy.get('#searchInput').type('Pakistan')
         cy.get('.suggestion-title').contains('Pakistan').click()
         
     })
 
-    it.skip('Dynamic Dropdown', () => {
-        cy.visit("https://www.wikipedia.org/")
-        cy.get('#searchInput').type('Pakistan')
-        cy.get('.suggestion-title').contains('Pakistan').click()
+    it('Dynamic Dropdown', () => {
+        cy.visit("https://www.google.com/")
+        cy.get('#APjFqb').type('cypress automation')
+        cy.wait(4000)
+        cy.get('div.wM6W7d>span').should('have.length', 13)
+        cy.get('div.wM6W7d>span').each(($el, index, $list) => {
+            if($el.text() == 'cypress automation tutorial'){
+                cy.wrap($el).click()
+            }
+        })
+
+        cy.get('#APjFqb').should('have.value', 'cypress automation tutorial')
+        
         
     })
 
