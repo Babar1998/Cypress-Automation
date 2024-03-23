@@ -1,23 +1,27 @@
 /// <reference types ="Cypress" />
 describe('Alerts', () => {
 
-    it('Javascript Alert with text & OK', () => {
-        cy.visit("https://testautomationpractice.blogspot.com/")
-        
+    it('Javascript Alert', () => {
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
+        cy.get("button[onclick='jsAlert()']").click()
+        cy.on('window:alert', (t) => {
+            expect(t).to.contains('I am a JS Alert');
+        })
+        cy.get('#result').should('have.text','You successfully clicked an alert')
         
     })
 
-    it('Javascript Confirm Alert with text, OK & Cancel', () => {
-        cy.visit("https://testautomationpractice.blogspot.com/")
+    it.skip('Javascript Confirm Alert', () => {
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
         
         
     })
-    it('Javascript Prompt Alert with User Input & OK', () => {
-        cy.visit("https://testautomationpractice.blogspot.com/")
+    it.skip('Javascript Prompt Alert', () => {
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
         
         
     })
-    it('Authenticated Alert', () => {
+    it.skip('Authenticated Alert', () => {
         cy.visit("https://testautomationpractice.blogspot.com/")
         
         
