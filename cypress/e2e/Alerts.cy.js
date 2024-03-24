@@ -11,17 +11,50 @@ describe('Alerts', () => {
         
     })
 
-    it.skip('Javascript Confirm Alert', () => {
+    it('Javascript Confirm Alert - OK', () => {
         cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
+        cy.get("button[onclick='jsConfirm()']").click()
+        cy.on('window:confirm', (t) => {
+            expect(t).to.contains('I am a JS Confirm');
+        })
+        cy.get('#result').should('have.text','You clicked: Ok')
+        
+    })
+    it('Javascript Confirm Alert - Cancel', () => {
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
+        cy.get("button[onclick='jsConfirm()']").click()
+        cy.on('window:confirm', (t) => {
+            expect(t).to.contains('I am a JS Confirm');
+        })
+        cy.on('window:confirm', () => false);
+
+        cy.get('#result').should('have.text','You clicked: Cancel')
         
         
     })
-    it.skip('Javascript Prompt Alert', () => {
+
+    it('Javascript Prompt Alert - OK', () => {
         cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
-        
+        cy.window().then((win) => {
+            cy.stub(win, 'prompt').returns('welcome')
+        })
+        cy.get("button[onclick='jsPrompt()']").click()
+        cy.get('#result').should('have.text','You entered: welcome')
+
         
     })
-    it.skip('Authenticated Alert', () => {
+    it.only('Javascript Prompt Alert - Cancel', () => {
+        cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
+        cy.window().then((win) => {
+            cy.stub(win, 'prompt').returns(null)
+        })
+        cy.get("button[onclick='jsPrompt()']").click()
+        cy.on('window:prompt', () => false);
+        cy.get('#result').should('have.text','You entered: null')
+        
+    })
+
+    it('Authenticated Alert', () => {
         cy.visit("https://testautomationpractice.blogspot.com/")
         
         
