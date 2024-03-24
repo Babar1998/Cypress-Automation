@@ -43,7 +43,7 @@ describe('Alerts', () => {
 
         
     })
-    it.only('Javascript Prompt Alert - Cancel', () => {
+    it('Javascript Prompt Alert - Cancel', () => {
         cy.visit("https://the-internet.herokuapp.com/javascript_alerts")
         cy.window().then((win) => {
             cy.stub(win, 'prompt').returns(null)
@@ -54,8 +54,20 @@ describe('Alerts', () => {
         
     })
 
-    it('Authenticated Alert', () => {
-        cy.visit("https://testautomationpractice.blogspot.com/")
+    it.only('Authenticated Alert', () => {
+
+        // approach 1
+        /*cy.visit("https://the-internet.herokuapp.com/basic_auth", {auth: 
+                                                                        {
+                                                                            username: "admin", 
+                                                                            password: "admin"
+                                                                        }
+                                                                    } );
+        cy.get("div[class='example'] p").should('have.contain','Congratulations!')*/
+
+        // approach 2
+        cy.visit("https://admin:admin@the-internet.herokuapp.com/basic_auth")
+        cy.get("div[class='example'] p").should('have.contain','Congratulations!')
         
         
     })
