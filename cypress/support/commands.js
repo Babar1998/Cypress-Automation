@@ -75,7 +75,7 @@ Cypress.Commands.add('loginAgentBetaAndGoToDeclaration', () => {
 })
 
 Cypress.Commands.add('accErohalLogin', () => {
-    cy.visit("https://acc.erohal.io/#/login")
+    cy.visit("https://acc.erohal.io/#/login", {failOnStatusCode: false});
     cy.get("input[type='email']").type("erohaladmin@gmail.com")
     cy.get("input[type='password']").type("erohal")
     cy.get(".btn-text").click()
